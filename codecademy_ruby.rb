@@ -12,7 +12,7 @@ end
 puts isDefined?(code, "class Calculadora")
 
 # Testa se a Classe passada foi criada
-def classeDefinida?(className)
+def classDefined?(className)
   className.is_a?(Class)
 end
 
@@ -22,22 +22,22 @@ class Calculadora
   end
 end
 
-puts classeDefinida?(Calculadora)
+puts classDefined?(Calculadora)
 
 # Testa se o método passado foi criado e realiza um assert
   # metodo dentro de uma classe especifica
   
-  def metodoEmClasseDefinido?(className, methodName, resultado, *params)
+  def methodInClassDefined?(className, methodName, resultado, *params)
     if(className.is_a?(Class) && className.method_defined?(methodName))
       # assert do metodo
       className.new.send(methodName,*params).eql?(resultado)
     end
   end
   
-  puts metodoEmClasseDefinido?(Calculadora, :soma, 18, 1,8,9)
+  puts methodInClassDefined?(Calculadora, :soma, 18, 1,8,9)
   
   # Metodo qualquer, fora de classes
-  def metodo_definido?(methodName, resultado=nil, *params)
+  def methodDefined?(methodName, resultado=nil, *params)
     retorno = defined? methodName
     if(!retorno.nil? && !resultado.nil?)
       puts here
@@ -49,5 +49,5 @@ puts classeDefinida?(Calculadora)
   def met
   end
   
-  puts metodo_definido?(:meta)
+  puts methodDefined?(:meta)
   
